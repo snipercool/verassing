@@ -1,0 +1,134 @@
+:root{
+    --background: #ffb2ae;
+    --white: #ffffff;
+    --primary: #db4241;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--background);
+    font-family: 'Poppins', sans-serif;
+    color: var(--primary);
+}
+
+header{
+    text-align: center;
+}
+header .logo{
+    width: 80%;
+    margin-inline: auto;
+    margin-block: 2rem;
+    max-width: 300px;
+}
+.total{
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto;
+    grid-gap: 10px;
+    padding: 10px;
+    margin-bottom: 1rem;
+}
+@media all and (max-width: 640px) {
+    .grid{
+        grid-template-columns: auto auto;
+    } 
+}
+
+.card{
+    background-color: var(--white);
+    border-radius: 0.5rem;
+    text-align: center;
+    cursor: pointer;
+}
+.card .letter{
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
+}
+.card .letter, .card .date_name{
+    color: var(--primary);
+}
+.card.done{
+    background-color: var(--primary);
+}
+.card.done .letter,.card.done .date_name{
+    color: var(--white);
+}
+
+#modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background: var(--white);
+    padding: 1rem;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 300ms all;
+}
+#modal.open{
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+}
+#modal .close-button{
+    font-size: 2rem;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 99;
+}
+#modal .content{
+    position: relative;
+    top: 4rem;
+    width: calc(100% -  2rem);
+}
+#modal .content #ideas, #modal .content .activity_form input[type="submit"]{
+    width: 100%;
+    padding-block: 0.75rem;
+    border-radius: 0.5rem;
+    border: 0;
+    background-color: var(--primary);
+    color: var(--white);
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+#modal .content .activity_form{
+    margin-top: 1rem;
+}
+#modal .content .activity_form .input_group{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+#modal .content .activity_form .input_group input{
+    height: 2rem;
+    font-size: 1rem;
+    outline: none;
+    border: 2px solid var(--primary);
+    border-radius: 0.5rem;
+    padding-inline: 10px;
+    margin-bottom: 0.5rem;
+}
+#modal .content .activity_form .input_group input:hover ~ label, #modal .content .activity_form .input_group input:focus ~ label, #modal .content .activity_form .input_group input:valid ~ label{
+    top: -14px;
+}
+#modal .content .activity_form .input_group label{
+    position: absolute;
+    top: 6px;
+    left: 11px;
+    padding-inline: 5px;
+    background-color: var(--white);
+    transition: all 300ms ease;
+}

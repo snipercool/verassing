@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Date Night</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <img class="logo" src="./img/logo.svg" alt="">
+    </header>
+    <main>
+        <div class="total">
+            <span class="amount">0</span>/26 completed
+        </div>
+        <div id="alphabet" class="grid">
+            <?php foreach ($dates as $date) : ?>
+                <div class="card<?php echo ($date['done']) ? ' done' : ''; ?>" data-letter="<?php echo $date['letter']; ?>">
+                    <h2 class="letter"><?php echo $date['letter']; ?></h2>
+                    <?php echo ($date['done'] && $date['date_activity']) ? '<p class="date_name">' . $date['date_activity'] . '</p>' : ''; ?>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </main>
+    <div id="modal">
+        <div class="close-button">X</div>
+        <div class="content">
+            <button id="ideas" data-letter="A">GIVE ME IDEAS</button>
+            <div id="idea_grid"></div>
+            <form class="activity_form" action="post">
+                <div class="input_group">
+                    <input type="text" name="activity" id="date_activity" pattern="[A-z]{3}" required>
+                    <label for="activity">Activity</label>
+                </div>
+                <input type="submit" value="Mark as Done">
+            </form>
+        </div>
+    </div>
+</body>
+<script src="./index.js" defer></script>
+
+</html>
